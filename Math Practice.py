@@ -1,10 +1,17 @@
 
-from random import randint
+from random import choice
+
+QUESTION_TYPES = ['+', '-', '*', '/', '√']
+DEFAULT_NUM_OF_QUESTIONS = 10
 
 def chooseTypeOfQuestion():
-    return randint(1,5)
+    return choice(QUESTION_TYPES)
+
+def playRound(typeOfQuestion):
+    print(typeOfQuestion)
+
 
 if __name__ == '__main__':
-    while(true):
-        type = chooseTypeOfQuestion()
-        playRound(type)
+    for i in range(DEFAULT_NUM_OF_QUESTIONS):
+        typeOfQuestion = chooseTypeOfQuestion()
+        playRound(typeOfQuestion)
