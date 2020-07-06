@@ -1,6 +1,7 @@
 
 from random import choice
 from random import randint
+from math import sqrt
 
 DEFAULT_NUM_OF_QUESTIONS = 10
 
@@ -10,7 +11,7 @@ OPERATIONS = {
     '-': lambda x, y: x - y,
     '*': lambda x, y: x * y,
     '/': lambda x, y: x // y,
-    '√': lambda x: sqrt(x)
+    '√': lambda x, y: int(sqrt(x))
 }
 
 def chooseTypeOfQuestion():
@@ -19,10 +20,13 @@ def chooseTypeOfQuestion():
 def playRound(typeOfQuestion):
     firstNum = randint(1,100)
     secondNum = randint(1,100)
-    print(firstNum, " ", typeOfQuestion, " ", secondNum)
-    userAnswer = input()
+    prompt = f'{firstNum} {typeOfQuestion} {secondNum} = '
+
+    userAnswer = input(prompt)
     rightAnswer = OPERATIONS[typeOfQuestion](firstNum, secondNum)
-    return userAnswer == rightAnswer
+
+    print("Correct answer: ", rightAnswer)
+    return int(userAnswer) == rightAnswer
 
 
 if __name__ == '__main__':
